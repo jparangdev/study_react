@@ -11,7 +11,7 @@ export default function TodoList() {
     };
     return (
         <div>
-            <button onClick={{onClick}}>할 일 추가</button>
+            <button onClick={onClick}>할 일 추가</button>
             {todos}
         </div>
     );

@@ -1,21 +1,17 @@
-import './App.css';
-import TodoList from "./TodoList";
+import React, {useEffect} from 'react';
 
 function App() {
-    console.log(`NODE_ENV => ${process.env.NODE_ENV}`);
-    console.log(`REACT_APP_DATA_API => ${process.env.REACT_APP_DATA_API}`);
-    console.log(`REACT_APP_LOGIN_API => ${process.env.REACT_APP_LOGIN_API}`);
-
-  return (
-    <div className="App">
-      <div>
-          node_env => {process.env.NODE_ENV}<br />
-          data_api => {process.env.REACT_APP_DATA_API}<br />
-          login_api => %REACT_APP_LOGIN_API%
-      </div>
-      <TodoList />
-    </div>
-  );
+    useEffect(() =>{
+        window.onpopstate = function (event) {
+            console.log(`location: ${document.location}, state :  ${event.state}`);
+        };
+    }, []);
+    return (
+        <div>
+            <button onClick={() => window.history.pushState('v1','','/page1')}>page1</button>
+            <button onClick={() => window.history.pushState('v2','','/page2')}>page2</button>
+        </div>
+    );
 }
 
 export default App;
